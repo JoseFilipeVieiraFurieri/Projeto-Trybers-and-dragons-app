@@ -21,9 +21,9 @@ class Character implements Fighter {
     this._name = name;
     this._dexterity = getRandomInt(1, 10);
     this._race = new Elf(this._name, this._dexterity);
-    this._maxLifePoints = (this._race.maxLifePoints / 2);
+    this._maxLifePoints = this._race.maxLifePoints / 2;
     this._archetype = new Mage(this._name);
-    this._lifePoints = this._race.maxLifePoints;
+    this._lifePoints = this._maxLifePoints;
     this._strength = getRandomInt(1, 10);
     this._defense = getRandomInt(1, 10);
     this._energy = { 
@@ -86,8 +86,8 @@ class Character implements Fighter {
 
     const newMaxLife = this._maxLifePoints + getRandomInt(1, 10);
 
-    if (newMaxLife > this._race.maxLifePoints) {
-      this._maxLifePoints = this._race.maxLifePoints;
+    if (newMaxLife > this.race.maxLifePoints) {
+      this._maxLifePoints = this.race.maxLifePoints;
     } else {
       this._maxLifePoints = newMaxLife;
     }
